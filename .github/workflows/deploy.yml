@@ -26,5 +26,8 @@ jobs:
         with:
           context: .
           push: true
-          # Thay 'tannhat0602' bằng username Docker Hub của bạn
-          tags: ${{ secrets.DOCKER_USERNAME }}/spring-boot-app:latest
+          tags: tannhat0602/phungnhattan:latest
+
+      # Bước 4: Trigger deploy trên ithutech
+      - name: Trigger deploy on ithutech
+        run: curl -X POST ${{ secrets.DEPLOY_URL }}
