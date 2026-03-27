@@ -11,11 +11,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests -B
 
 # Stage 2: Run
-FROM eclipse-temurin:21-jre-alpine
+FROM openjdk:21-slim
 WORKDIR /app
-
-RUN addgroup -S spring && adduser -S spring -G spring
-USER spring
 
 COPY --from=build /app/target/*.jar app.jar
 
